@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Questionnaire FR / 日本語</title>
+  <title>Questionnaire Bilingue</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h2 id="form-title">Formulaire de contact</h2>
+    <h2 id="form-title">Questionnaire Exemple</h2>
 
     <!-- Sélecteur de langue -->
     <label for="lang">Langue / 言語 :</label>
@@ -17,20 +17,100 @@
     </select>
 
     <!-- Formulaire -->
-    <form id="contactForm">
-      <label for="name" data-fr="Nom :" data-jp="名前 :">Nom :</label>
-      <input type="text" id="name" required>
+    <form id="quizForm">
+      
+      <!-- Question 1 -->
+      <div class="question">
+        <p data-fr="1. Question 1 :" data-jp="1. 質問 1 :">1. Question 1 :</p>
+        <label><input type="radio" name="q1" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q1" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q1" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
 
-      <label for="message" data-fr="Message :" data-jp="メッセージ :">Message :</label>
-      <textarea id="message" rows="4" required></textarea>
+      <!-- Question 2 -->
+      <div class="question">
+        <p data-fr="2. Question 2 :" data-jp="2. 質問 2 :">2. Question 2 :</p>
+        <label><input type="radio" name="q2" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q2" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q2" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question">
+        <p data-fr="3. Question 3 :" data-jp="3. 質問 3 :">3. Question 3 :</p>
+        <label><input type="radio" name="q3" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q3" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q3" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question">
+        <p data-fr="4. Question 4 :" data-jp="4. 質問 4 :">4. Question 4 :</p>
+        <label><input type="radio" name="q4" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q4" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q4" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="question">
+        <p data-fr="5. Question 5 :" data-jp="5. 質問 5 :">5. Question 5 :</p>
+        <label><input type="radio" name="q5" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q5" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q5" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question 6 -->
+      <div class="question">
+        <p data-fr="6. Question 6 :" data-jp="6. 質問 6 :">6. Question 6 :</p>
+        <label><input type="radio" name="q6" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q6" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q6" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question 7 -->
+      <div class="question">
+        <p data-fr="7. Question 7 :" data-jp="7. 質問 7 :">7. Question 7 :</p>
+        <label><input type="radio" name="q7" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q7" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q7" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question 8 -->
+      <div class="question">
+        <p data-fr="8. Question 8 :" data-jp="8. 質問 8 :">8. Question 8 :</p>
+        <label><input type="radio" name="q8" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q8" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q8" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question 9 -->
+      <div class="question">
+        <p data-fr="9. Question 9 :" data-jp="9. 質問 9 :">9. Question 9 :</p>
+        <label><input type="radio" name="q9" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q9" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q9" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question 10 -->
+      <div class="question">
+        <p data-fr="10. Question 10 :" data-jp="10. 質問 10 :">10. Question 10 :</p>
+        <label><input type="radio" name="q10" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+        <label><input type="radio" name="q10" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+        <label><input type="radio" name="q10" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+      </div>
+
+      <!-- Question Autres -->
+      <div class="question">
+        <p data-fr="11. Autres :" data-jp="11. その他 :">11. Autres :</p>
+        <textarea id="others" placeholder="Écrivez ici..." data-fr="Écrivez ici..." data-jp="ここに書いてください..."></textarea>
+      </div>
 
       <button type="submit" data-fr="Envoyer" data-jp="送信">Envoyer</button>
     </form>
 
-    <p id="status"></p>
+    <div id="result"></div>
   </div>
 
-  <!-- Firebase + Script -->
-  <script type="module" src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
