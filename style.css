@@ -3,8 +3,7 @@ body {
   background: #f4f4f9;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 20px;
 }
 
 .container {
@@ -12,7 +11,7 @@ body {
   padding: 20px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 350px;
+  width: 500px;
 }
 
 h2 {
@@ -22,34 +21,34 @@ h2 {
 
 label {
   display: block;
-  margin: 10px 0 5px;
+  margin: 5px 0;
 }
 
-input, textarea, select {
+textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 8px;
   border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
 }
 
 button {
   margin-top: 15px;
-  width: 100%;
   padding: 12px;
+  width: 100%;
   border: none;
   background: #007bff;
   color: white;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 16px;
+  cursor: pointer;
 }
 
 button:hover {
   background: #0056b3;
 }
 
-#status {
-  margin-top: 10px;
-  text-align: center;
+#result {
+  margin-top: 15px;
   font-weight: bold;
 }
