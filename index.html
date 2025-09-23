@@ -19,27 +19,33 @@
         </select>
       </div>
 
-      <!-- Formulaire -->
       <form id="quizForm">
-        <!-- Questions identiques à l’exemple précédent (10 questions + Autres) -->
-        <!-- Je garde la structure du HTML précédent -->
         <div class="questions-wrapper">
-          <!-- Exemple de question 1 -->
-          <div class="question">
-            <p data-fr="1. Question 1 :" data-jp="1. 質問 1 :">1. Question 1 :</p>
-            <label><input type="radio" name="q1" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
-            <label><input type="radio" name="q1" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
-            <label><input type="radio" name="q1" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
-          </div>
-          <!-- ... copier les autres questions ici comme dans l’exemple précédent ... -->
+          <!-- Générer 10 questions -->
+          <script>
+            const questionsContainer = document.currentScript.parentNode;
+            for (let i = 1; i <= 10; i++) {
+              const div = document.createElement("div");
+              div.classList.add("question");
+              div.innerHTML = `
+                <p data-fr="${i}. Question ${i} :" data-jp="${i}. 質問 ${i} :">${i}. Question ${i} :</p>
+                <label><input type="radio" name="q${i}" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+                <label><input type="radio" name="q${i}" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
+                <label><input type="radio" name="q${i}" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
+              `;
+              questionsContainer.appendChild(div);
+            }
 
-          <!-- Question Autres -->
-          <div class="question">
-            <p data-fr="11. Autres :" data-jp="11. その他 :">11. Autres :</p>
-            <textarea id="others" placeholder="Écrivez ici..." data-fr="Écrivez ici..." data-jp="ここに書いてください..."></textarea>
-          </div>
+            // Question "Autres"
+            const autresDiv = document.createElement("div");
+            autresDiv.classList.add("question");
+            autresDiv.innerHTML = `
+              <p data-fr="11. Autres :" data-jp="11. その他 :">11. Autres :</p>
+              <textarea id="others" placeholder="Écrivez ici..." data-fr="Écrivez ici..." data-jp="ここに書いてください..."></textarea>
+            `;
+            questionsContainer.appendChild(autresDiv);
+          </script>
         </div>
-
         <button type="submit" data-fr="Envoyer" data-jp="送信">Envoyer</button>
       </form>
 
