@@ -1,49 +1,48 @@
-// === Firebase Import ===
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
-
-// === Config Firebase (remplace avec tes infos) ===
-const firebaseConfig = {
-  apiKey: "TA_CLE_API",
-  authDomain: "TON_PROJET.firebaseapp.com",
-  projectId: "TON_PROJET",
-  storageBucket: "TON_PROJET.appspot.com",
-  messagingSenderId: "XXX",
-  appId: "XXX"
-};
-
-// Init Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// === Gestion de la langue ===
+const form = document.getElementById("quizForm");
+const resultDiv = document.getElementById("result");
 const langSelect = document.getElementById("lang");
-langSelect.addEventListener("change", () => {
-  let lang = langSelect.value;
+
+// Fonction pour changer la langue
+function updateLanguage() {
+  const lang = langSelect.value;
+  // changer textes des questions
   document.querySelectorAll("[data-fr]").forEach(el => {
-    el.textContent = el.getAttribute(`data-${lang}`);
+    if (el.tagName === "P" || el.tagName === "BUTTON") {
+      el.textContent = el.getAttribute(`data-${lang}`);
+    } else if (el.tagName === "LABEL") {
+      el.childNodes[1].textContent = " " + el.getAttribute(`data-${lang}`);
+    } else if (el.tagName === "TEXTAREA") {
+      el.placeholder = el.getAttribute(`data-${lang}`);
+    }
   });
-});
+}
 
-// === Gestion du formulaire ===
-document.getElementById("contactForm").addEventListener("submit", async (e) => {
+// Initialiser la langue
+updateLanguage();
+
+// Écoute le changement de langue
+langSelect.addEventListener("change", updateLanguage);
+
+// Gestion du formulaire
+form.addEventListener("submit", function(e) {
   e.preventDefault();
-  let status = document.getElementById("status");
-
-  try {
-    await addDoc(collection(db, "messages"), {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      message: document.getElementById("message").value,
-      lang: document.getElementById("lang").value,
-      date: new Date()
-    });
-    status.textContent = "✅ Message sauvegardé (保存されました)";
-    status.style.color = "green";
-    e.target.reset();
-  } catch (err) {
-    console.error(err);
-    status.textContent = "❌ Erreur (エラー)";
-    status.style.color = "red";
+  let answers = {};
+  
+  // 10 questions
+  for (let i = 1; i <= 10; i++) {
+    const radios = form[`q${i}`];
+    let value = radios.value;
+    if (!value) {
+      resultDiv.textContent = langSelect.value === "fr" ? "Veuillez répondre à toutes les questions." : "すべての質問に答えてください。";
+      resultDiv.style.color = "red";
+      return;
+    }
+    answers[`q${i}`] = value;
   }
+  
+  // Champ "Autres"
+  answers["autres"] = document.getElementById("others").value;
+  
+  resultDiv.innerHTML = "<pre>" + JSON.stringify(answers, null, 2) + "</pre>";
+  resultDiv.style.color = "green";
 });
