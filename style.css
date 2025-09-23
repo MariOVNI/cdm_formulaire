@@ -1,100 +1,66 @@
-/* Reset minimal */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin:0; padding:0; }
 
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f9;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 20px;
+  background:#f4f4f9;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px;
+  min-height:100vh;
 }
 
-.page-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
+.page-wrapper { width:100%; display:flex; justify-content:center; }
 
 .container {
-  background: #fff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  max-width: 800px; /* plus large pour affichage correct */
-  width: 100%;
+  background:#fff;
+  padding:30px 40px;
+  border-radius:12px;
+  box-shadow:0 6px 12px rgba(0,0,0,0.15);
+  max-width:900px; /* plus large pour 10 questions */
+  width:100%;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+h2 { text-align:center; margin-bottom:20px; }
 
 .lang-selector {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  margin-bottom:20px;
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
 
-label {
-  display: block;
-  margin: 5px 0;
-}
+label { display:block; margin:5px 0; }
 
-.questions-wrapper {
-  margin-bottom: 15px;
-}
+.questions-wrapper { margin-bottom:15px; }
 
 textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
   resize: vertical;
-  min-height: 60px;
+  min-height:60px;
 }
 
 button {
-  margin-top: 20px;
-  padding: 14px;
-  width: 100%;
-  border: none;
-  background: #007bff;
-  color: white;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
+  margin-top:20px;
+  padding:14px;
+  width:100%;
+  border:none;
+  background:#007bff;
+  color:white;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
 }
 
-button:hover {
-  background: #0056b3;
+button:hover { background:#0056b3; }
+
+#result { margin-top:15px; font-weight:bold; white-space:pre-wrap; }
+
+@media(max-width:600px) {
+  .container { padding:20px; }
+  .lang-selector { flex-direction:column; align-items:flex-start; }
+  button { font-size:14px; padding:12px; }
 }
-
-#result {
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-/* Responsive pour petits écrans */
-@media (max-width: 600px) {
-  .container {
-    padding: 20px;
-  }
-
-  .lang-selector {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 12px;
-  }
-}
-
