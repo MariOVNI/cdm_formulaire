@@ -6,8 +6,8 @@ const questionsContainer = document.querySelector(".questions-wrapper");
 // 🔹 Tableau de 10 questions avec choix FR / JP
 const questionsData = [
   {
-    fr: "1. Quelle est ta couleur préférée ?",
-    jp: "1. 好きな色は何ですか？",
+    fr: "1. Quel age avez-vous ?",
+    jp: "1. 年齢はなんですか？",
     options: [
       { fr: "Rouge", jp: "赤" },
       { fr: "Bleu", jp: "青" },
@@ -15,17 +15,17 @@ const questionsData = [
     ]
   },
   {
-    fr: "2. Quel animal aimes-tu le plus ?",
-    jp: "2. 一番好きな動物は何ですか？",
+    fr: "2. Combient de fois jouez-vous au jeux de société en 1ans ?",
+    jp: "2. 一年にボードゲームは何回しますか？",
     options: [
-      { fr: "Chat", jp: "猫" },
-      { fr: "Chien", jp: "犬" },
-      { fr: "Oiseau", jp: "鳥" }
+      { fr: "Moins de 1fois", jp: "猫" },
+      { fr: "Entre 12 à 24 fois", jp: "犬" },
+      { fr: "Plus de 1fois", jp: "鳥" }
     ]
   },
   {
     fr: "3. Quel est ton sport favori ?",
-    jp: "3. 好きなスポーツは何ですか？",
+    jp: "3. ボードゲームをするとしたら、オンラインと対面どちらを選びますか？",
     options: [
       { fr: "Football", jp: "サッカー" },
       { fr: "Basketball", jp: "バスケットボール" },
@@ -174,3 +174,4 @@ form.addEventListener("submit", function(e) {
 
   form.reset();
 });
+
