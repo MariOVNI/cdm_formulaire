@@ -29,8 +29,8 @@
               div.classList.add("question");
               div.innerHTML = `
                 <p data-fr="${i}. Question ${i} :" data-jp="${i}. 質問 ${i} :">${i}. Question ${i} :</p>
-                <label><input type="radio" name="q${i}" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1<input type="radio" name="q${i}" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
-                <label></label>
+                <label><input type="radio" name="q${i}" value="Exemple 1" data-fr="Exemple 1" data-jp="例 1"> Exemple 1</label>
+                <label><input type="radio" name="q${i}" value="Exemple 2" data-fr="Exemple 2" data-jp="例 2"> Exemple 2</label>
                 <label><input type="radio" name="q${i}" value="Exemple 3" data-fr="Exemple 3" data-jp="例 3"> Exemple 3</label>
               `;
               questionsContainer.appendChild(div);
@@ -56,4 +56,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
