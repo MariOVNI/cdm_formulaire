@@ -1,178 +1,193 @@
-const form = document.getElementById("quizForm");
-const resultDiv = document.getElementById("result");
-const langSelect = document.getElementById("lang");
-const questionsContainer = document.querySelector(".questions-wrapper");
-
-// 🔹 Tableau de 10 questions avec choix FR / JP
+/* -------------------- Données des questions -------------------- */
 const questionsData = [
-  {
-    fr: "1. Quel age avez-vous ?",
-    jp: "1. 年齢はなんですか？",
-    options: [
-      { fr: "Moins de 18 ans", jp: "18歳未満" },
-      { fr: "Entre 18 et 30 ans", jp: "18歳から30歳" },
-      { fr: "Plus de 30ans", jp: "30歳以上" }
+  { fr:"1. Quel est votre âge ?", jp:"1. 年齢は？",
+    options:[
+      { fr:"Moins de 18 ans", jp:"18歳未満" },
+      { fr:"Entre 18 et 30 ans", jp:"18歳から30歳" },
+      { fr:"Plus de 30 ans", jp:"30歳以上" }
     ]
   },
-  {
-    fr: "2. Combient de fois jouez-vous au jeux de société en 1ans ?",
-    jp: "2. 一年にボードゲームは何回しますか？",
-    options: [
-      { fr: "Moins de 1fois", jp: "猫" },
-      { fr: "Entre 12 à 24 fois", jp: "犬" },
-      { fr: "Plus de 1fois", jp: "鳥" }
+  { fr:"2. Quelle est votre couleur préférée ?", jp:"2. 好きな色は？",
+    options:[
+      { fr:"Rouge", jp:"赤" },
+      { fr:"Bleu", jp:"青" },
+      { fr:"Vert", jp:"緑" }
     ]
   },
-  {
-    fr: "3. Quel est ton sport favori ?",
-    jp: "3. ボードゲームをするとしたら、オンラインと対面どちらを選びますか？",
-    options: [
-      { fr: "Football", jp: "サッカー" },
-      { fr: "Basketball", jp: "バスケットボール" },
-      { fr: "Tennis", jp: "テニス" }
+  { fr:"3. Quel animal préférez-vous ?", jp:"3. 好きな動物は？",
+    options:[
+      { fr:"Chat", jp:"猫" },
+      { fr:"Chien", jp:"犬" },
+      { fr:"Oiseau", jp:"鳥" }
     ]
   },
-  {
-    fr: "4. Quelle saison préfères-tu ?",
-    jp: "4. 好きな季節は何ですか？",
-    options: [
-      { fr: "Printemps", jp: "春" },
-      { fr: "Été", jp: "夏" },
-      { fr: "Hiver", jp: "冬" }
+  { fr:"4. Quel est votre sport favori ?", jp:"4. 好きなスポーツは？",
+    options:[
+      { fr:"Football", jp:"サッカー" },
+      { fr:"Basketball", jp:"バスケットボール" },
+      { fr:"Tennis", jp:"テニス" }
     ]
   },
-  {
-    fr: "5. Quel est ton fruit préféré ?",
-    jp: "5. 好きな果物は何ですか？",
-    options: [
-      { fr: "Pomme", jp: "りんご" },
-      { fr: "Banane", jp: "バナナ" },
-      { fr: "Raisin", jp: "ぶどう" }
+  { fr:"5. Quel genre de musique écoutez-vous ?", jp:"5. 好きな音楽は？",
+    options:[
+      { fr:"Classique", jp:"クラシック" },
+      { fr:"Pop", jp:"ポップ" },
+      { fr:"Rock", jp:"ロック" }
     ]
   },
-  {
-    fr: "6. Quel genre de musique écoutes-tu ?",
-    jp: "6. よく聴く音楽のジャンルは？",
-    options: [
-      { fr: "Pop", jp: "ポップ" },
-      { fr: "Rock", jp: "ロック" },
-      { fr: "Classique", jp: "クラシック" }
+  { fr:"6. Préférez-vous la mer ou la montagne ?", jp:"6. 海と山どちらが好きですか？",
+    options:[
+      { fr:"Mer", jp:"海" },
+      { fr:"Montagne", jp:"山" },
+      { fr:"Les deux", jp:"両方" }
     ]
   },
-  {
-    fr: "7. Quelle boisson aimes-tu le plus ?",
-    jp: "7. 好きな飲み物は何ですか？",
-    options: [
-      { fr: "Eau", jp: "水" },
-      { fr: "Thé", jp: "お茶" },
-      { fr: "Café", jp: "コーヒー" }
+  { fr:"7. Quel type de film aimez-vous ?", jp:"7. 好きな映画のジャンルは？",
+    options:[
+      { fr:"Action", jp:"アクション" },
+      { fr:"Comédie", jp:"コメディ" },
+      { fr:"Drame", jp:"ドラマ" }
     ]
   },
-  {
-    fr: "8. Quel moyen de transport préfères-tu ?",
-    jp: "8. 好きな交通手段は？",
-    options: [
-      { fr: "Voiture", jp: "車" },
-      { fr: "Train", jp: "電車" },
-      { fr: "Vélo", jp: "自転車" }
+  { fr:"8. Quelle saison préférez-vous ?", jp:"8. 好きな季節は？",
+    options:[
+      { fr:"Printemps", jp:"春" },
+      { fr:"Été", jp:"夏" },
+      { fr:"Hiver", jp:"冬" }
     ]
   },
-  {
-    fr: "9. Quelle matière scolaire aimes-tu ?",
-    jp: "9. 好きな教科は？",
-    options: [
-      { fr: "Mathématiques", jp: "数学" },
-      { fr: "Histoire", jp: "歴史" },
-      { fr: "Sciences", jp: "科学" }
+  { fr:"9. Aimez-vous cuisiner ?", jp:"9. 料理は好きですか？",
+    options:[
+      { fr:"Oui", jp:"はい" },
+      { fr:"Non", jp:"いいえ" },
+      { fr:"Parfois", jp:"時々" }
     ]
   },
-  {
-    fr: "10. Quelle destination de voyage préfères-tu ?",
-    jp: "10. 行きたい旅行先は？",
-    options: [
-      { fr: "Mer", jp: "海" },
-      { fr: "Montagne", jp: "山" },
-      { fr: "Ville", jp: "都市" }
+  { fr:"10. Utilisez-vous souvent Internet ?", jp:"10. インターネットをよく使いますか？",
+    options:[
+      { fr:"Oui, tous les jours", jp:"はい、毎日" },
+      { fr:"Rarement", jp:"たまに" },
+      { fr:"Jamais", jp:"全く使わない" }
     ]
   }
 ];
 
-// 🔹 Générer le formulaire à partir du tableau
-questionsData.forEach((q, index) => {
-  const div = document.createElement("div");
-  div.classList.add("question");
-  let html = `<p data-fr="${q.fr}" data-jp="${q.jp}">${q.fr}</p>`;
-  
-  q.options.forEach(opt => {
-    html += `
-      <label class="inline-option">
-        <input type="radio" name="q${index+1}" value="${opt.fr}" data-fr="${opt.fr}" data-jp="${opt.jp}"> ${opt.fr}
-      </label>
-    `;
+/* -------------------- DOM -------------------- */
+const langSelect = document.getElementById('lang');
+const questionsContainer = document.querySelector('.questions-wrapper');
+const form = document.getElementById('quizForm');
+const resultDiv = document.getElementById('result');
+
+/* -------------------- Génération du formulaire -------------------- */
+function generateQuestions() {
+  questionsContainer.innerHTML = '';
+
+  questionsData.forEach((q, idx) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+
+    // Question
+    const p = document.createElement('p');
+    p.setAttribute('data-fr', q.fr);
+    p.setAttribute('data-jp', q.jp);
+    p.textContent = q.fr;
+    div.appendChild(p);
+
+    // Options
+    q.options.forEach(opt => {
+      const label = document.createElement('label');
+      label.className = 'inline-option';
+
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = `q${idx+1}`;
+      input.value = opt.fr;
+
+      const span = document.createElement('span');
+      span.className = 'option-text';
+      span.setAttribute('data-fr', opt.fr);
+      span.setAttribute('data-jp', opt.jp);
+      span.textContent = opt.fr;
+
+      label.appendChild(input);
+      label.appendChild(span);
+      div.appendChild(label);
+    });
+
+    questionsContainer.appendChild(div);
   });
 
-  div.innerHTML = html;
-  questionsContainer.appendChild(div);
-});
+  // Question "Autres"
+  const autresDiv = document.createElement('div');
+  autresDiv.className = 'question';
+  const pAutres = document.createElement('p');
+  pAutres.setAttribute('data-fr','Autres :');
+  pAutres.setAttribute('data-jp','その他：');
+  pAutres.textContent = 'Autres :';
 
-// 🔹 Ajouter question "Autres"
-const autresDiv = document.createElement("div");
-autresDiv.classList.add("question");
-autresDiv.innerHTML = `
-  <p data-fr="11. Autres :" data-jp="11. その他 :">11. Autres :</p>
-  <textarea id="others" placeholder="Écrivez ici..." data-fr="Écrivez ici..." data-jp="ここに書いてください..."></textarea>
-`;
-questionsContainer.appendChild(autresDiv);
+  const textarea = document.createElement('textarea');
+  textarea.id = 'others';
+  textarea.setAttribute('data-fr','Écrivez ici...');
+  textarea.setAttribute('data-jp','ここに書いてください...');
+  textarea.placeholder = textarea.getAttribute('data-fr');
 
-// 🔹 Stockage votes
-let votes = {};
-questionsData.forEach((q, i) => {
-  votes[`q${i+1}`] = {};
-  q.options.forEach(opt => {
-    votes[`q${i+1}`][opt.fr] = 0;
-  });
-});
+  autresDiv.appendChild(pAutres);
+  autresDiv.appendChild(textarea);
+  questionsContainer.appendChild(autresDiv);
+}
 
-// 🔹 Fonction pour changer de langue
+/* -------------------- Changement de langue -------------------- */
 function updateLanguage() {
   const lang = langSelect.value;
-  document.querySelectorAll("[data-fr]").forEach(el => {
-    if (el.tagName === "P" || el.tagName === "BUTTON") {
-      el.textContent = el.getAttribute(`data-${lang}`);
-    } else if (el.tagName === "LABEL") {
-      el.childNodes[1].textContent = " " + el.getAttribute(`data-${lang}`);
-    } else if (el.tagName === "TEXTAREA") {
-      el.placeholder = el.getAttribute(`data-${lang}`);
-    }
-  });
-}
-updateLanguage();
-langSelect.addEventListener("change", updateLanguage);
 
-// 🔹 Soumission du formulaire
-form.addEventListener("submit", function(e) {
+  document.querySelectorAll('.question p').forEach(p => {
+    p.textContent = p.getAttribute(`data-${lang}`);
+  });
+
+  document.querySelectorAll('.option-text').forEach(span => {
+    span.textContent = span.getAttribute(`data-${lang}`);
+  });
+
+  const textarea = document.getElementById('others');
+  if (textarea) {
+    textarea.placeholder = textarea.getAttribute(`data-${lang}`);
+  }
+
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = btn.getAttribute(`data-${lang}`);
+
+  const title = document.getElementById('form-title');
+  title.textContent = title.getAttribute(`data-${lang}`);
+}
+
+/* -------------------- Initialisation -------------------- */
+generateQuestions();
+updateLanguage();
+langSelect.addEventListener('change', updateLanguage);
+
+/* -------------------- Soumission -------------------- */
+form.addEventListener('submit', function(e) {
   e.preventDefault();
-  let answers = {};
-  for (let i = 1; i <= questionsData.length; i++) {
-    const radios = form[`q${i}`];
-    if (!radios.value) {
-      resultDiv.textContent = langSelect.value === "fr" ? 
-        "Veuillez répondre à toutes les questions." : "すべての質問に答えてください。";
-      resultDiv.style.color = "red";
+  const answers = {};
+
+  for (let i = 0; i < questionsData.length; i++) {
+    const selected = form.querySelector(`input[name="q${i+1}"]:checked`);
+    if (!selected) {
+      resultDiv.textContent = (langSelect.value === 'fr')
+        ? "Veuillez répondre à toutes les questions."
+        : "すべての質問に答えてください。";
+      resultDiv.style.color = 'red';
       return;
     }
-    answers[`q${i}`] = radios.value;
-    votes[`q${i}`][radios.value]++;
+    answers[`q${i+1}`] = selected.value;
   }
-  answers["autres"] = document.getElementById("others").value;
+  answers.autres = document.getElementById('others').value || "";
 
-  // Affichage JSON et votes
-  let display = "Réponses soumises :\n" + JSON.stringify(answers, null, 2) + "\n\n";
-  display += "Votes totaux :\n" + JSON.stringify(votes, null, 2);
-  resultDiv.innerHTML = `<pre>${display}</pre>`;
-  resultDiv.style.color = "green";
+  resultDiv.textContent = JSON.stringify(answers, null, 2);
+  resultDiv.style.color = 'green';
 
   form.reset();
 });
+
 
 
