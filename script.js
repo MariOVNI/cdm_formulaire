@@ -9,9 +9,9 @@ const questionsData = [
     fr: "1. Quel age avez-vous ?",
     jp: "1. 年齢はなんですか？",
     options: [
-      { fr: "Rouge", jp: "赤" },
-      { fr: "Bleu", jp: "青" },
-      { fr: "Vert", jp: "緑" }
+      { fr: "Moins de 18 ans", jp: "18歳未満" },
+      { fr: "Entre 18 et 30 ans", jp: "18歳から30歳" },
+      { fr: "Plus de 30ans", jp: "30歳以上" }
     ]
   },
   {
@@ -174,4 +174,5 @@ form.addEventListener("submit", function(e) {
 
   form.reset();
 });
+
 
