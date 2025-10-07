@@ -7,67 +7,67 @@ const questionsData = [
       { fr:"Plus de 30 ans", jp:"30歳以上" }
     ]
   },
-  { fr:"2. Quelle est votre couleur préférée ?", jp:"2. 好きな色は？",
+  { fr:"2.  ?", jp:"2. 性別を教えてください。",
     options:[
-      { fr:"Rouge", jp:"赤" },
-      { fr:"Bleu", jp:"青" },
-      { fr:"Vert", jp:"緑" }
+      { fr:"", jp:"男性" },
+      { fr:"", jp:"女性" },
+      { fr:"", jp:"その他" }
     ]
   },
-  { fr:"3. Quel animal préférez-vous ?", jp:"3. 好きな動物は？",
+  { fr:"3.  ?", jp:"3. ボードゲームをするときは誰としますか？",
     options:[
-      { fr:"Chat", jp:"猫" },
-      { fr:"Chien", jp:"犬" },
-      { fr:"Oiseau", jp:"鳥" }
+      { fr:"", jp:"知り合いと" },
+      { fr:"", jp:"一人で" },
+      { fr:"", jp:"誰でも" }
     ]
   },
-  { fr:"4. Quel est votre sport favori ?", jp:"4. 好きなスポーツは？",
+  { fr:"4.  ?", jp:"4. ボードゲームは頻繁に遊びますか？",
     options:[
-      { fr:"Football", jp:"サッカー" },
-      { fr:"Basketball", jp:"バスケットボール" },
-      { fr:"Tennis", jp:"テニス" }
+      { fr:"", jp:"毎週１回以上" },
+      { fr:"", jp:"毎月３回以下" },
+      { fr:"", jp:"毎年５回以下" }
     ]
   },
-  { fr:"5. Quel genre de musique écoutez-vous ?", jp:"5. 好きな音楽は？",
+  { fr:"5.  ?", jp:"5. どのようなボードゲームの方が好きですか？",
     options:[
-      { fr:"Classique", jp:"クラシック" },
-      { fr:"Pop", jp:"ポップ" },
-      { fr:"Rock", jp:"ロック" }
+      { fr:"", jp:"競技型ゲーム" },
+      { fr:"", jp:"協力的ゲーム" },
+      { fr:"", jp:"どちらでもいい" }
     ]
   },
-  { fr:"6. Préférez-vous la mer ou la montagne ?", jp:"6. 海と山どちらが好きですか？",
+  { fr:"6.  ?", jp:"6. ボードゲームからなにかを学んだことはありますか？",
     options:[
-      { fr:"Mer", jp:"海" },
-      { fr:"Montagne", jp:"山" },
-      { fr:"Les deux", jp:"両方" }
+      { fr:"", jp:"ある" },
+      { fr:"", jp:"ない" },
+      { fr:"", jp:"わからない" }
     ]
   },
-  { fr:"7. Quel type de film aimez-vous ?", jp:"7. 好きな映画のジャンルは？",
+  { fr:"7.  ?", jp:"7. 遊ぶとしたらどっちですか？",
     options:[
-      { fr:"Action", jp:"アクション" },
-      { fr:"Comédie", jp:"コメディ" },
-      { fr:"Drame", jp:"ドラマ" }
+      { fr:"", jp:"オンラインボードゲーム" },
+      { fr:"", jp:"アナログボードゲーム" },
+      { fr:"", jp:"どっちでもいい" }
     ]
   },
-  { fr:"8. Quelle saison préférez-vous ?", jp:"8. 好きな季節は？",
+  { fr:"8.  ?", jp:"8. ボードゲームは教育に使えると思いますか？",
     options:[
-      { fr:"Printemps", jp:"春" },
-      { fr:"Été", jp:"夏" },
-      { fr:"Hiver", jp:"冬" }
+      { fr:"", jp:"使える" },
+      { fr:"", jp:"使えない" },
+      { fr:"", jp:"わからない" }
     ]
   },
-  { fr:"9. Aimez-vous cuisiner ?", jp:"9. 料理は好きですか？",
+  { fr:"9.  ?", jp:"9. ボードゲームはオンライン化すると思いますか？",
     options:[
-      { fr:"Oui", jp:"はい" },
-      { fr:"Non", jp:"いいえ" },
-      { fr:"Parfois", jp:"時々" }
+      { fr:"", jp:"オンライン化する" },
+      { fr:"", jp:"アナログボードゲームが中心" },
+      { fr:"", jp:"共存する" }
     ]
   },
-  { fr:"10. Utilisez-vous souvent Internet ?", jp:"10. インターネットをよく使いますか？",
+  { fr:"10.  ?", jp:"10. ボードゲームで「自由に自分のやりたいようにプレイすること」と「みんなで協力したりルールを守ること」のどちらを重視しますか？",
     options:[
-      { fr:"Oui, tous les jours", jp:"はい、毎日" },
-      { fr:"Rarement", jp:"たまに" },
-      { fr:"Jamais", jp:"全く使わない" }
+      { fr:"", jp:"自由にプレイすることを重視する" },
+      { fr:"", jp:"みんなで協力したりルールを守ることを重視する" },
+      { fr:"", jp:"両方バランスよく重視する" }
     ]
   }
 ];
@@ -188,6 +188,7 @@ form.addEventListener('submit', function(e) {
 
   form.reset();
 });
+
 
 
 
