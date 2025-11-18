@@ -73,7 +73,7 @@ h2 {
 /* ============================= */
 #ageSlider {
   -webkit-appearance: none;
-  width: 50%;
+  width: 200px;
   height: 10px;
   border-radius: 5px;
   background: #ddd;
@@ -171,4 +171,5 @@ button:hover {
   .inline-option { display: block; margin-right: 0; }
   #ageInput { width: 60px; }
 }
+
 
