@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const container = document.querySelector(".questions-wrapper");
 
+  // Génération questions 2→10 sous forme QCM
   questionsData.forEach((q, i) => {
     const number = i + 2;
     const div = document.createElement("div");
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       input.type = "radio";
       input.name = "question_" + number;
       input.value = idx;
-      if(idx===0) input.required = true;
+      if(idx===0) input.required = true; // obligatoire de choisir une option
 
       const span = document.createElement("span");
       span.setAttribute("data-fr", opt.fr);
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =============================
-  // Slider
+  // Slider connecté à l'input number
   // =============================
   const ageSlider  = document.getElementById("ageSlider");
   const ageValue   = document.getElementById("ageValue");
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =============================
-  // Changement de langue
+  // Changement langue FR/JP
   // =============================
   const langSelect = document.getElementById("lang");
   langSelect.addEventListener("change", () => {
@@ -105,14 +106,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =============================
-  // Submit
+  // Submit formulaire
   // =============================
   document.getElementById("quizForm").addEventListener("submit", async (e)=>{
     e.preventDefault();
 
     const answers = {};
     answers.ageSlider = parseInt(ageSlider.value);
-    answers.ageExact = parseInt(ageInput.value);
+    answers.ageExact  = parseInt(ageInput.value);
 
     questionsData.forEach((q,i)=>{
       const number = i + 2;
@@ -120,12 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
       answers["question_"+number] = val ? parseInt(val.value) : null;
     });
 
-    const otherText = document.getElementById("otherText").value;
-    answers.otherComment = otherText;
+    answers.otherComment = document.getElementById("otherText").value;
 
-    console.log(answers);
+    console.log("Réponses :", answers);
 
-    // Firebase
     try {
       await db.collection("responses").add(answers);
       document.getElementById("result").textContent = "Réponse envoyée !";
