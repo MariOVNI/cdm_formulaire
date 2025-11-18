@@ -4,8 +4,17 @@
   <meta charset="UTF-8">
   <title>Questionnaire Bilingue</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Lien vers le CSS -->
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .container { max-width: 800px; margin: auto; }
+    .question { margin-bottom: 25px; }
+    .inline-option { display: inline-block; margin-right: 20px; }
+    #ageSlider { width: 100%; }
+    #ageValue { font-weight: bold; margin-left: 10px; }
+    textarea { width: 100%; min-height: 80px; }
+    button { padding: 10px 20px; font-size: 16px; }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -20,23 +29,27 @@
     </div>
 
     <form id="quizForm">
-      <div class="questions-wrapper"></div>
+      <div class="questions-wrapper">
+        <!-- Question 1 : slider -->
         <div class="question" id="age-question">
-  <p data-fr="Quel est votre âge ?" data-jp="年齢はいくつですか？">Quel est votre âge ?</p>
+          <p data-fr="Quel est votre âge ?" data-jp="年齢はいくつですか？">Quel est votre âge ?</p>
 
-  <label>
-    <span data-fr="Slider :" data-jp="スライダー：">Slider :</span>
-  </label>
-  <input type="range" id="ageSlider" min="1" max="100" value="20">
-  <span id="ageValue">20</span>
+          <label><span data-fr="Slider :" data-jp="スライダー：">Slider :</span></label>
+          <input type="range" id="ageSlider" min="6" max="100" value="20">
+          <span id="ageValue">20</span>
 
-  <br><br>
+          <br><br>
 
-  <label>
-    <span data-fr="Âge exact :" data-jp="正確な年齢：">Âge exact :</span>
-  </label>
-  <input type="number" id="ageInput" min="1" max="120" value="20">
-</div>
+          <label><span data-fr="Âge exact :" data-jp="正確な年齢：">Âge exact :</span></label>
+          <input type="number" id="ageInput" min="6" max="120" value="20" required>
+        </div>
+      </div>
+
+      <!-- Commentaire facultatif -->
+      <div class="question" id="other-comment">
+        <p data-fr="Autres commentaires (facultatif) :" data-jp="その他コメント（任意）：">Autres commentaires (facultatif) :</p>
+        <textarea id="otherText" placeholder="Écrivez ici..." data-fr="Écrivez ici..." data-jp="ここに書いてください..."></textarea>
+      </div>
 
       <button type="submit" data-fr="Envoyer" data-jp="送信">Envoyer</button>
     </form>
@@ -44,7 +57,12 @@
     <div id="result"></div>
   </div>
 
-  <!-- Lien vers le JS -->
+  <!-- Firebase SDK si tu veux l’utiliser -->
+  <!--
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+  -->
+
   <script src="script.js"></script>
 </body>
 </html>
