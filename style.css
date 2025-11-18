@@ -1,71 +1,173 @@
+/* ============================= */
+/* STYLE GLOBAL                  */
+/* ============================= */
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f7f8;
+  color: #333;
+  line-height: 1.6;
   margin: 0;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+  padding: 0;
 }
 
 .container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 100%;
   max-width: 800px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ============================= */
+/* TITRE ET LANGUE               */
+/* ============================= */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #4a90e2;
 }
 
 .lang-selector {
-  margin-bottom: 16px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
+  margin-bottom: 20px;
+  text-align: right;
 }
 
+.lang-selector select {
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* ============================= */
+/* QUESTIONS                     */
+/* ============================= */
 .question {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .question p {
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
+/* ============================= */
+/* QCM - OPTIONS INLINE           */
+/* ============================= */
 .inline-option {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-right: 20px;
+  display: inline-block;
+  margin-right: 25px;
+  margin-bottom: 10px;
   cursor: pointer;
+  font-size: 15px;
 }
 
+.inline-option input[type="radio"] {
+  margin-right: 8px;
+  accent-color: #4a90e2; /* couleur du bouton radio */
+}
+
+/* ============================= */
+/* SLIDER AGE                    */
+/* ============================= */
+#ageSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#ageSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #4a90e2;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+}
+
+#ageSlider::-webkit-slider-thumb:hover {
+  background: #357ABD;
+}
+
+#ageSlider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #4a90e2;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+}
+
+/* ============================= */
+/* INPUT NUMBER                   */
+/* ============================= */
+#ageInput {
+  width: 80px;
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* ============================= */
+/* TEXTAREA COMMENTAIRE           */
+/* ============================= */
 textarea {
   width: 100%;
-  padding: 8px;
+  min-height: 80px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  min-height: 70px;
-  margin-top: 8px;
+  resize: vertical;
 }
 
+/* ============================= */
+/* BOUTON SUBMIT                  */
+/* ============================= */
 button {
-  margin-top: 16px;
-  padding: 12px;
-  width: 100%;
+  display: block;
+  background-color: #4a90e2;
+  color: #fff;
   border: none;
-  background: #007bff;
-  color: white;
-  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 10px;
   cursor: pointer;
+  margin: 20px auto 0 auto;
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background: #0056b3;
+  background-color: #357ABD;
+  transform: scale(1.05);
 }
 
+/* ============================= */
+/* RESULTAT                       */
+/* ============================= */
 #result {
-  margin-top: 16px;
-  white-space: pre-wrap;
-  font-family: monospace;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: green;
+}
+
+/* ============================= */
+/* RESPONSIVE                     */
+/* ============================= */
+@media (max-width: 600px) {
+  .inline-option { display: block; margin-right: 0; }
+  #ageInput { width: 60px; }
 }
