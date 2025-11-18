@@ -20,6 +20,23 @@
     </div>
 
     <form id="quizForm">
+      <div class="question" id="age-question">
+  <p data-fr="Quel est votre âge ?" data-jp="年齢はいくつですか？">Quel est votre âge ?</p>
+
+  <label>
+    <span data-fr="Slider :" data-jp="スライダー：">Slider :</span>
+  </label>
+  <input type="range" id="ageSlider" min="1" max="100" value="20">
+  <span id="ageValue">20</span>
+
+  <br><br>
+
+  <label>
+    <span data-fr="Âge exact :" data-jp="正確な年齢：">Âge exact :</span>
+  </label>
+  <input type="number" id="ageInput" min="1" max="120" value="20">
+</div>
+
       <div class="questions-wrapper"></div>
       <button type="submit" data-fr="Envoyer" data-jp="送信">Envoyer</button>
     </form>
@@ -31,3 +48,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
