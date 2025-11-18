@@ -1,5 +1,20 @@
 // =============================
-// DONNÉES DES QUESTIONS 2 → 10
+// CONFIGURATION FIREBASE
+// Remplace par ta config
+// =============================
+const firebaseConfig = {
+  apiKey: "TA_CLE_API",
+  authDomain: "TON_PROJET.firebaseapp.com",
+  projectId: "TON_PROJET",
+  storageBucket: "TON_PROJET.appspot.com",
+  messagingSenderId: "xxx",
+  appId: "xxx"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// =============================
+// QUESTIONS 2 → 10
 // =============================
 const questionsData = [
   { fr:"2. Quel est votre genre ?", jp:"2. 性別を教えてください。",
@@ -68,14 +83,12 @@ const questionsData = [
 ];
 
 // =============================
-// CREATION AUTOMATIQUE DES Q2 → Q10
+// CREATION DES QUESTIONS 2 → 10
 // =============================
 const container = document.querySelector(".questions-wrapper");
 
-// On ignore la question 1 car elle est déjà dans le HTML
 questionsData.forEach((q, index) => {
   const number = index + 2;
-
   const div = document.createElement("div");
   div.className = "question";
   div.id = "question-" + number;
@@ -95,6 +108,8 @@ questionsData.forEach((q, index) => {
     input.name = "question_" + number;
     input.value = idx;
 
+    if(idx === 0) input.required = true; // obligatoire par groupe
+
     const span = document.createElement("span");
     span.setAttribute("data-fr", opt.fr);
     span.setAttribute("data-jp", opt.jp);
@@ -109,19 +124,19 @@ questionsData.forEach((q, index) => {
 });
 
 // =============================
-// CHANGEMENT DE LANGUE
+// LANGUE
 // =============================
 const langSelect = document.getElementById("lang");
-
 langSelect.addEventListener("change", () => {
   const lang = langSelect.value;
   document.querySelectorAll("[data-fr]").forEach(el => {
-    el.textContent = el.getAttribute("data-" + lang);
+    if(el.tagName === "TEXTAREA") el.placeholder = el.getAttribute(`data-${lang}`);
+    else el.textContent = el.getAttribute(`data-${lang}`);
   });
 });
 
 // =============================
-// SLIDER AGE ↔ INPUT NUMBER
+// SLIDER AGE
 // =============================
 const ageSlider  = document.getElementById("ageSlider");
 const ageValue   = document.getElementById("ageValue");
@@ -138,32 +153,36 @@ ageInput.addEventListener("input", () => {
 });
 
 // =============================
-// ENVOI DES RÉPONSES
-// (Firebase si activé)
+// ENVOI FORMULAIRE
 // =============================
 document.getElementById("quizForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const answers = {};
 
-  // AGE
+  // Question 1
   answers.ageSlider = parseInt(ageSlider.value);
   answers.ageExact  = parseInt(ageInput.value);
 
-  // Q2-A10
+  // Questions 2 → 10
   questionsData.forEach((q, i) => {
     const number = i + 2;
     const val = document.querySelector(`input[name="question_${number}"]:checked`);
     answers["question_" + number] = val ? parseInt(val.value) : null;
   });
 
+  // Commentaire facultatif
+  const otherText = document.getElementById("otherText").value;
+  answers.otherComment = otherText;
+
   console.log("Réponses collectées :", answers);
 
-  // Si Firebase est activé :
-  /*
-  const db = firebase.firestore();
-  await db.collection("responses").add(answers);
-  */
-
-  alert("Réponses envoyées !");
+  // ENVOI FIREBASE
+  try {
+    await db.collection("responses").add(answers);
+    document.getElementById("result").textContent = "Réponse envoyée !";
+  } catch(err) {
+    console.error(err);
+    document.getElementById("result").textContent = "Erreur lors de l'envoi";
+  }
 });
