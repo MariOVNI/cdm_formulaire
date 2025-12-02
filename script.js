@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { fr:"9. Tous les jeux vont-ils devenir numériques ?", jp:"9. 全てのボードゲームはオンライン化すると思いますか？",
       options:[
-        { fr:"Oui", jp:"はい、オンライン化する" },
-        { fr:"Non", jp:"いいえ、アナログボードゲームが中心" },
+        { fr:"Oui", jp:"オンライン化する" },
+        { fr:"Non", jp:"アナログボードゲームが中心" },
         { fr:"Coexisteront", jp:"共存する" }
       ]
     },
@@ -179,3 +179,4 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("result").textContent = "Réponse envoyée !";
   });
 });
+
